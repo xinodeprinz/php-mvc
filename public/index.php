@@ -4,6 +4,8 @@ use Core\Router as Route;
 use Core\Request;
 use App\Controllers\HomeController;
 
+session_start();
+
 require_once "../vendor/autoload.php";
 
 Route::get('/', [HomeController::class, 'index']);

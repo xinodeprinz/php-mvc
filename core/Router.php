@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Router extends Controller
+class Router extends Helpers
 {
     protected static array $routes = [];
 

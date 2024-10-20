@@ -19,5 +19,6 @@ class HomeController extends Controller
     {
         $data = $_POST;
         print_r($data);
+        return $this->back(['success' => 'Form submitted successfully']);
     }
 }
