@@ -10,6 +10,12 @@
 <body>
     <h1><?php echo $title ?></h1>
     <p><?php echo $content ?></p>
+
+    <form action="/submit" method="post">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Enter Name" name="name">
+        <button type="submit">Submit</button>
+    </form>
 </body>
 
 </html>

@@ -8,7 +8,10 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $data = ['title' => ' Welcome', 'content' => 'This is the homepage.'];
+        $data = array(
+            'title' => 'Welcome',
+            'content' => 'This is the homepage.'
+        );
         return $this->view('home', $data);
     }
 

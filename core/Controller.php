@@ -14,6 +14,6 @@ class Controller
     {
         extract($data);
         unset($data);
-        require_once "../app/views/{$view}.php";
+        require_once "../app/views/{$view}.view.php";
     }
 }
