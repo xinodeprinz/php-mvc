@@ -1,14 +1,13 @@
 <?php
 
-use Core\Router;
+use Core\Router as Route;
 use Core\Request;
+use App\Controllers\HomeController;
 
 require_once "../vendor/autoload.php";
 
-$router = new Router();
-
-$router->get('/', 'HomeController@index');
-$router->post('/submit', 'HomeController@submit');
+Route::get('/', [HomeController::class, 'index']);
+Route::post('/submit', [HomeController::class, 'submit']);
 
 // Get the action to execute
-$router->direct(Request::uri(), Request::method());
+Route::direct(Request::uri(), Request::method());

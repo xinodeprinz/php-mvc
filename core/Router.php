@@ -4,40 +4,36 @@ namespace Core;
 
 class Router
 {
-    protected array $routes = [];
+    protected static array $routes = [];
 
-    public function get(string $uri, string $controller)
+    public static function get(string $uri, array $action)
     {
         $uri = trim($uri, '/');
-        $this->routes['GET'][$uri] = $controller;
+        self::$routes['GET'][$uri] = $action;
     }
 
-    public function post(string $uri, string $controller)
+    public static function post(string $uri, array $action)
     {
         $uri = trim($uri, '/');
-        $this->routes['POST'][$uri] = $controller;
+        self::$routes['POST'][$uri] = $action;
     }
 
-    public function direct(string $uri, string $requestType)
+    public static function direct(string $uri, string $requestType)
     {
-        if (array_key_exists($uri, $this->routes[$requestType])) {
-            return $this->callAction(
-                ...explode('@', $this->routes[$requestType][$uri])
-            );
+        if (array_key_exists($uri, self::$routes[$requestType])) {
+            [$controller, $method] = self::$routes[$requestType][$uri];
+            return self::callAction($controller, $method);
         }
     }
 
-    public function callAction(string $controller, string $action)
+    public static function callAction(string $controller, string $action)
     {
-        $controller = "App\\Controllers\\{$controller}";
         $controller = new $controller;
-
         if (!method_exists($controller, $action)) {
             throw new \Exception(
                 "{$controller} does not correspond to the {$action} action."
             );
         }
-
         return $controller->$action();
     }
 }
