@@ -10,7 +10,7 @@ class Controller
      * @param array $data An associative array of data to pass to the view file
      */
 
-    protected function view(string $view, array $data = [])
+    protected static function view(string $view, array $data = [])
     {
         extract($data);
         unset($data);

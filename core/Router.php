@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Router
+class Router extends Controller
 {
     protected static array $routes = [];
 
@@ -23,6 +23,9 @@ class Router
         if (array_key_exists($uri, self::$routes[$requestType])) {
             [$controller, $method] = self::$routes[$requestType][$uri];
             return (new $controller)->$method();
+        } else {
+            http_response_code(404);
+            return self::view('404');
         }
     }
 }
