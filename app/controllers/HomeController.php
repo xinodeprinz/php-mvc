@@ -9,7 +9,7 @@ class HomeController extends Controller
     public function index()
     {
         $data = ['title' => ' Welcome', 'content' => 'This is the homepage.'];
-        require_once "../app/views/home.php";
+        return $this->view('home', $data);
     }
 
     public function submit()
