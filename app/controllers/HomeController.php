@@ -12,7 +12,7 @@ class HomeController extends Controller
             'title' => 'Welcome',
             'content' => 'This is the homepage.'
         );
-        return $this->view('home', $data);
+        return $this->view('home', $data, 'main');
     }
 
     public function submit()
