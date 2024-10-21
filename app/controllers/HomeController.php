@@ -2,17 +2,29 @@
 
 namespace App\Controllers;
 
+use App\Models\User;
 use Core\Controller;
 use Core\Request;
+use DateTime;
 
 class HomeController extends Controller
 {
+    protected User $user;
+
+    public function __construct()
+    {
+        $this->user = new User();
+    }
+
     public function index()
     {
+        $users = $this->user->all();
         $data = array(
             'title' => 'MVC - Home',
-            'description' => 'This is the homepage.'
+            'description' => 'This is the homepage.',
+            'users' => $users,
         );
+
         return view('home', 'main', $data);
     }
 
@@ -21,9 +33,13 @@ class HomeController extends Controller
         return view('create', 'main');
     }
 
-    public function submit(Request $request)
+    public function createUser(Request $request)
     {
-        var_dump($request->all());
-        // return back(['error' => 'An error occurred']);
+        $this->validate($request->all());
+        $this->user->create([
+            ...$request->all(),
+            'password' => md5($request->password)
+        ]);
+        return redirect('/', ['success' => 'User created successfully']);
     }
 }

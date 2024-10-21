@@ -11,12 +11,14 @@
 
 <body>
     <!-- Sessions -->
-    <?php if ($success = getFlash('success')): ?>
-        <div><?php echo $success ?></div>
-    <?php endif ?>
-    <?php if ($error = getFlash('error')): ?>
-        <div><?php echo $error ?></div>
-    <?php endif ?>
+    <div id="alerts">
+        <?php if ($success = getFlash('success')): ?>
+            <div class="alert success"><?php echo $success ?></div>
+        <?php endif ?>
+        <?php if ($error = getFlash('error')): ?>
+            <div class="alert error"><?php echo $error ?></div>
+        <?php endif ?>
+    </div>
     <header class="header">
         <div class="container">
             <h1>PHP MVC</h1>
@@ -33,6 +35,8 @@
             <p>2024 &copy; All rights reserved</p>
         </div>
     </footer>
+
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

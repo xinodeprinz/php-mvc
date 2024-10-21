@@ -12,17 +12,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>John Smith</td>
-                <td class="normal-case">johnsmith@gmail.com</td>
-                <td>+237678909876</td>
-                <td>01/03/2024</td>
-                <td>
-                    <a href="/update/1">Update</a>
-                    <a href="/delete/1">Delete</a>
-                </td>
-            </tr>
+            <?php foreach ($users as $id => $user): ?>
+                <tr>
+                    <td><?php echo $id + 1 ?></td>
+                    <td><?php echo $user['name'] ?></td>
+                    <td class="normal-case"><?php echo $user['email'] ?></td>
+                    <td><?php echo $user['phone'] ?></td>
+                    <td><?php echo $user['created_at'] ?></td>
+                    <td>
+                        <a href="/update/<?php echo $user['id'] ?>">Update</a>
+                        <a href="/delete/<?php echo $user['id'] ?>">Delete</a>
+                    </td>
+                </tr>
+            <?php endforeach ?>
         </tbody>
     </table>
 </div>
