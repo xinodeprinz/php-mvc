@@ -12,15 +12,16 @@ class DB
     public static function connect()
     {
         if (!self::$pdo) {
-            $host = 'localhost';
-            $db = 'php_mvc';
-            $user = 'root';
-            $pass = '';
+            $host = getenv('DB_HOST');
+            $db = getenv('DB_NAME');
+            $user = getenv('DB_USER');
+            $port = getenv('DB_PORT');
+            $password = getenv('DB_PASSWORD');
             $charset = 'utf8mb4';
-            $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+            $dsn = "mysql:host=$host;dbname=$db;port=$port;charset=$charset";
 
             try {
-                self::$pdo = new PDO($dsn, $user, $pass, [
+                self::$pdo = new PDO($dsn, $user, $password, [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                     PDO::ATTR_EMULATE_PREPARES => false,

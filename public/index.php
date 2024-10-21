@@ -3,11 +3,15 @@
 use Core\Router as Route;
 use Core\Request;
 use App\Controllers\HomeController;
+use Core\Env;
 
 session_start();
 
 require_once "../vendor/autoload.php";
 require_once "../core/Helpers.php";
+
+// Load .env file
+Env::load(__DIR__ . '/../.env');
 
 // Declare your routes here
 Route::get('/', [HomeController::class, 'index']);
