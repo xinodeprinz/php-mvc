@@ -9,7 +9,8 @@ class Controller
         $keys = array_keys($data);
         foreach ($keys as $key) {
             if (empty($data[$key])) {
-                return back(['error' => "The {$key} is required."]);
+                back(['error' => "The {$key} is required."]);
+                exit;
             }
         }
     }

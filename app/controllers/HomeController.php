@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Models\User;
 use Core\Controller;
 use Core\Request;
-use DateTime;
 
 class HomeController extends Controller
 {
