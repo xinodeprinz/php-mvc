@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Controller extends Helpers
+class Controller
 {
     // Put general controller attributes and methods here
 }

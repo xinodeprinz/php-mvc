@@ -7,6 +7,7 @@ use App\Controllers\HomeController;
 session_start();
 
 require_once "../vendor/autoload.php";
+require_once "../core/Helpers.php";
 
 Route::get('/', [HomeController::class, 'index']);
 Route::post('/submit', [HomeController::class, 'submit']);

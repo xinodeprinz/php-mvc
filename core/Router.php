@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Router extends Helpers
+class Router
 {
     protected static array $routes = [];
 
@@ -25,7 +25,7 @@ class Router extends Helpers
             return (new $controller)->$method();
         } else {
             http_response_code(404);
-            return self::view('404');
+            view('404');
         }
     }
 }

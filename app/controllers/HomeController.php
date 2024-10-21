@@ -12,13 +12,13 @@ class HomeController extends Controller
             'title' => 'Welcome',
             'content' => 'This is the homepage.'
         );
-        return $this->view('home', $data, 'main');
+        return view('home', $data, 'main');
     }
 
     public function submit()
     {
         $data = $_POST;
         print_r($data);
-        return $this->back(['success' => 'Form submitted successfully']);
+        return back(['error' => 'An error occurred']);
     }
 }
