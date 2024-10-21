@@ -2,28 +2,23 @@
 
 namespace App\Controllers;
 
-use App\Models\User;
 use Core\Controller;
 use Core\Request;
 
 class HomeController extends Controller
 {
-    protected User $user;
-
-    public function __construct()
-    {
-        $this->user = new User();
-    }
-
     public function index()
     {
         $data = array(
-            'title' => 'Welcome',
-            'content' => 'This is the homepage.'
+            'title' => 'MVC - Home',
+            'description' => 'This is the homepage.'
         );
-        $users = $this->user->all();
-        var_dump($users);
-        // return view('home', $data, 'main');
+        return view('home', 'main', $data);
+    }
+
+    public function create()
+    {
+        return view('create', 'main');
     }
 
     public function submit(Request $request)

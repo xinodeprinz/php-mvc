@@ -9,8 +9,9 @@ session_start();
 require_once "../vendor/autoload.php";
 require_once "../core/Helpers.php";
 
+// Declare your routes here
 Route::get('/', [HomeController::class, 'index']);
-Route::post('/submit', [HomeController::class, 'submit']);
+Route::get('/create', [HomeController::class, 'create']);
 
 // Get the action to execute
 Route::direct(Request::uri(), Request::method());

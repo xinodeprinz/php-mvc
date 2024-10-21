@@ -3,11 +3,11 @@
 /** 
  * Load a view and pass data to it
  * @param string $view The name of the view file to load
- * @param array $data An associative array of data to pass to the view file
  * @param string|null $layout Used to load a layout file
+ * @param array $data An associative array of data to pass to the view file
  */
 
-function view(string $view, array $data = [], $layout = null)
+function view(string $view, $layout = null, array $data = [])
 {
     // Converts all attributes into variables and destroys the data array
     extract($data);
