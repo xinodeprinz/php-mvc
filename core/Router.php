@@ -22,7 +22,21 @@ class Router
     {
         if (array_key_exists($uri, self::$routes[$requestType])) {
             [$controller, $method] = self::$routes[$requestType][$uri];
-            return (new $controller)->$method();
+
+            // Initialize controller object
+            $controller = new $controller;
+
+            // Check if the action accepts a parameter
+            $reflection = new \ReflectionMethod($controller, $method);
+            $params = $reflection->getParameters();
+
+            if (!empty($params) && $params[0]->getType() && !$params[0]->getType()->isBuiltin()) {
+                $className = $params[0]->getType()->getName();
+                if ($className === Request::class) {
+                    return $controller->$method(new Request());
+                }
+            }
+            return $controller->$method();
         } else {
             http_response_code(404);
             view('404');

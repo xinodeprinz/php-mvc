@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use Core\Controller;
+use Core\Request;
 
 class HomeController extends Controller
 {
@@ -15,10 +16,9 @@ class HomeController extends Controller
         return view('home', $data, 'main');
     }
 
-    public function submit()
+    public function submit(Request $request)
     {
-        $data = $_POST;
-        print_r($data);
-        return back(['error' => 'An error occurred']);
+        var_dump($request->all());
+        // return back(['error' => 'An error occurred']);
     }
 }
