@@ -24,10 +24,11 @@ cd php-mvc
 
 ### 2. Install Dependencies
 
-Since we're using Composer for autoloading classes, you need to generate the autoloader:
+Since we're using Composer for autoloading classes, you need to generate the autoloader and install node.js dependencies:
 
 ```bash
 composer dump-autoload
+npm install
 ```
 
 ### 3. Configure Environment Variables
@@ -43,11 +44,10 @@ DB_PASSWORD=your_database_password
 
 ### 4. Start the Application
 
-Run the following command to start a local PHP server:
+Run the following command to start a local PHP and Tailwind CSS compilation servers:
 
 ```bash
-cd public
-php -S localhost:2500
+npm start
 ```
 
 Now, you can visit the app in your browser at `http://localhost:2500`.
