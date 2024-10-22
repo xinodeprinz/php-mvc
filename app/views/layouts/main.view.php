@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/css/tailwind.css">
 </head>
 
-<body>
+<body class="relative min-h-screen overflow-y-scroll">
     <!-- Sessions -->
     <div id="alerts">
         <?php if ($success = getFlash('success')): ?>
@@ -19,12 +19,12 @@
             <div class="alert error"><?php echo $error ?></div>
         <?php endif ?>
     </div>
-    <header class="header">
-        <div class="container">
-            <a href="/" class="logo">
-                <h1>PHP MVC</h1>
+    <header class="bg-black text-white py-5">
+        <div class="w-5/6 mx-auto flex items-center justify-between">
+            <a href="/" class="font-bold text-2xl">
+                <h1><span class="text-orange-500">PHP</span> MVC</h1>
             </a>
-            <ul>
+            <ul class="flex gap-10 font-semibold">
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="/login">Login</a></li>
@@ -32,9 +32,9 @@
         </div>
     </header>
     <main><?php echo $content ?></main>
-    <footer class="footer">
-        <div class="container">
-            <p>2024 &copy; All rights reserved</p>
+    <footer class="bg-gray-100 text-center py-4 fixed bottom-0 w-full">
+        <div class="w-5/6 mx-auto capitalize">
+            <p><?php echo date('Y') ?> &copy; All rights reserved</p>
         </div>
     </footer>
 
