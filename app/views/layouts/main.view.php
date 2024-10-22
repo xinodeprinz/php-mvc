@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo isset($title) ? $title : "My Website" ?></title>
     <meta name="description" content="<?php echo isset($description) ? $description : "Page description" ?>">
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/tailwind.css">
 </head>
 
 <body>
