@@ -1,0 +1,11 @@
+{
+  "name": "php-mvc",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"npx tailwindcss -i ./public/css/input.css -o ./public/css/tailwind.css --watch\" \"php -S localhost:2500 -t public\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "tailwindcss": "^3.4.14"
+  }
+}
