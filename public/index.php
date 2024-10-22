@@ -17,6 +17,8 @@ Env::load(__DIR__ . '/../.env');
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/create', [HomeController::class, 'create']);
 Route::post('/create', [HomeController::class, 'createUser']);
+Route::get('/update/{id}', [HomeController::class, 'update']);
+Route::get('/delete/{id}', [HomeController::class, 'delete']);
 
 // Get the action to execute
 Route::direct(Request::uri(), Request::method());

@@ -21,7 +21,9 @@
     </div>
     <header class="header">
         <div class="container">
-            <h1>PHP MVC</h1>
+            <a href="/" class="logo">
+                <h1>PHP MVC</h1>
+            </a>
             <ul>
                 <li><a href="/about">About</a></li>
                 <li><a href="/contact">Contact</a></li>

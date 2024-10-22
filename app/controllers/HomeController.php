@@ -41,4 +41,13 @@ class HomeController extends Controller
         ]);
         return redirect('/', ['success' => 'User created successfully']);
     }
+    public function update(int $id)
+    {
+        echo $id;
+    }
+
+    public function delete(int $id)
+    {
+        echo $id;
+    }
 }
