@@ -19,15 +19,15 @@
             <div class="alert error"><?php echo $error ?></div>
         <?php endif ?>
     </div>
-    <header class="bg-black text-white py-5">
+    <header class="bg-black py-5">
         <div class="w-5/6 mx-auto flex items-center justify-between">
-            <a href="/" class="font-bold text-2xl">
+            <a href="/" class="font-bold text-2xl text-white">
                 <h1><span class="text-orange-500">PHP</span> MVC</h1>
             </a>
             <ul class="flex gap-10 font-semibold">
-                <li><a href="/about">About</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/login">Login</a></li>
+                <li><a class="hover:text-orange-500 text-white" href="/about">About</a></li>
+                <li><a class="hover:text-orange-500 text-white" href="/contact">Contact</a></li>
+                <li><a class="hover:text-orange-500 text-white" href="/login">Login</a></li>
             </ul>
         </div>
     </header>

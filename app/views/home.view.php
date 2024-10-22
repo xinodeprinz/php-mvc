@@ -15,13 +15,13 @@
             <?php foreach ($users as $id => $user): ?>
                 <tr class="bg-gray-100 even:bg-gray-300">
                     <td class="p-3"><?php echo $id + 1 ?></td>
-                    <td class="p-3"><?php echo $user['name'] ?></td>
-                    <td class="normal-case p-3"><?php echo $user['email'] ?></td>
-                    <td class="p-3"><?php echo $user['phone'] ?></td>
-                    <td class="p-3"><?php echo $user['created_at'] ?></td>
-                    <td class="p-3">
-                        <a href="/update/<?php echo $user['id'] ?>">Update</a>
-                        <a href="/delete/<?php echo $user['id'] ?>">Delete</a>
+                    <td class="p-3"><?php echo $user->name ?></td>
+                    <td class="normal-case p-3"><?php echo $user->email ?></td>
+                    <td class="p-3"><?php echo $user->phone ?></td>
+                    <td class="p-3"><?php echo $user->created_at ?></td>
+                    <td class="p-3 space-x-1">
+                        <a href="/update/<?php echo $user->id ?>" class="underline text-blue-600">Update</a>
+                        <a href="/delete/<?php echo $user->id ?>" class="underline text-red-600">Delete</a>
                     </td>
                 </tr>
             <?php endforeach ?>
