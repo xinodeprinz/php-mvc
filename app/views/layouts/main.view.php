@@ -11,12 +11,12 @@
 
 <body class="relative min-h-screen overflow-y-scroll">
     <!-- Sessions -->
-    <div id="alerts">
+    <div id="alerts" class="z-10">
         <?php if ($success = getFlash('success')): ?>
-            <div class="alert success"><?php echo $success ?></div>
+            <div class="fixed top-0 right-10 bg-green-600 text-white py-2 px-5 rounded"><?php echo $success ?></div>
         <?php endif ?>
         <?php if ($error = getFlash('error')): ?>
-            <div class="alert error"><?php echo $error ?></div>
+            <div class="fixed top-0 right-10 bg-red-600 text-white py-2 px-5 rounded"><?php echo $error ?></div>
         <?php endif ?>
     </div>
     <header class="bg-black py-5">
