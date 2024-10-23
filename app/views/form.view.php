@@ -1,5 +1,5 @@
 <div class="mx-auto w-5/6 mt-6 mb-10">
-    <form action="/create" method="post" class="bg-orange-500 py-5 px-10 rounded md:w-1/2 mx-auto">
+    <form action="<?php echo isset($id) ? "/update/{$id}" : '/create' ?>" method="post" class="bg-orange-500 py-5 px-10 rounded md:w-1/2 mx-auto">
         <div class="mb-3">
             <label class="block font-semibold mb-1" for="name">Name</label>
             <input type="text" class="w-full p-2 focus:outline-none" name="name" value="<?php echo old('name') ?>" placeholder="Enter Name">
