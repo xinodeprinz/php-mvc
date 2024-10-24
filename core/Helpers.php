@@ -72,3 +72,30 @@ function getFlash(string $key)
     }
     return null;
 }
+
+/** 
+ * @param array $oldData An associative array of data to pass to the session
+ * @return void
+ */
+function setOld(array $oldData = [])
+{
+    if (!empty($oldData)) {
+        foreach ($oldData as $key => $message) {
+            $_SESSION['old'][$key] = $message;
+        }
+    }
+}
+
+/** 
+ * @param string $key Key of the old data to get from the session
+ * @return string|null Value of the session's key
+ */
+function old(string $key)
+{
+    if (isset($_SESSION['old'][$key])) {
+        $message =  $_SESSION['old'][$key];
+        unset($_SESSION['old'][$key]);
+        return $message;
+    }
+    return null;
+}

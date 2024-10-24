@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function create()
     {
-        return view('create', 'main');
+        return view('form', 'main');
     }
 
     public function createUser(Request $request)
@@ -39,15 +39,31 @@ class HomeController extends Controller
             ...$request->all(),
             'password' => md5($request->password)
         ]);
-        return redirect('/', ['success' => 'User created successfully']);
+        return redirect('/', ['success' => 'User created']);
     }
-    public function update(int $id)
+
+    public function updateForm(int $id)
     {
-        echo $id;
+        $user = $this->user->find($id);
+        // Remove the password
+        unset($user->password);
+        setOld((array) $user);
+        return view('form', 'main', ['id' => $id]);
+    }
+
+    public function update(Request $request, int $id)
+    {
+        $this->validate($request->all());
+        $this->user->update($id, [
+            ...$request->all(),
+            'password' => md5($request->password)
+        ]);
+        return redirect('/', ['success' => 'User updated']);
     }
 
     public function delete(int $id)
     {
-        echo $id;
+        $this->user->delete($id);
+        return back(['success' => 'User deleted']);
     }
 }
