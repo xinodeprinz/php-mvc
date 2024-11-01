@@ -99,3 +99,27 @@ function old(string $key)
     }
     return null;
 }
+
+/**
+ * @param string|array $keyOrArray - The key of the session to get or 
+ * an associative array of the values to place in the session
+ * @param mixed $default (Optional) The default value of the getter
+ */
+function session($keyOrArray, $default = null)
+{
+    // If the input is an associative array, set each key-value pair in the session
+    if (is_array($keyOrArray)) {
+        foreach ($keyOrArray as $key => $value) {
+            $_SESSION[$key] = $value;
+        }
+        return true; // Indicate session values have been set
+    }
+
+    // If the input is a string, retrieve the value from the session or return the default
+    if (is_string($keyOrArray)) {
+        return $_SESSION[$keyOrArray] ?? $default;
+    }
+
+    // If the input type is not supported, throw an exception
+    throw new InvalidArgumentException("Argument must be an associative array or a string.");
+}

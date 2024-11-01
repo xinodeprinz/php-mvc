@@ -3,6 +3,7 @@
 namespace Core;
 
 use Core\DB;
+use InvalidArgumentException;
 use PDO;
 
 class Model
@@ -54,5 +55,31 @@ class Model
     {
         $stmt = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id = :id");
         return $stmt->execute(['id' => $id]);
+    }
+
+    public function login(array $credentials)
+    {
+        $identifierField = key($credentials);
+        $stmt = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE {$identifierField} = :identifier AND password = :password LIMIT 1");
+        $stmt->execute([
+            'identifier' => $credentials[$identifierField],
+            'password' => md5($credentials['password'])
+        ]);
+        $user = $stmt->fetch();
+        // Store user id in the session
+        session(['userId' => $user->id]);
+        return $user;
+    }
+
+    function auth()
+    {
+        $userId = session('userId');
+        if (!$userId) {
+            return null;
+        }
+
+        $user = $this->find($userId);
+        unset($user->password);
+        return $user;
     }
 }
