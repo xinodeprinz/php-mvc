@@ -13,6 +13,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->user = new User();
+        $this->guest();
     }
 
     public function index()
@@ -82,10 +83,5 @@ class HomeController extends Controller
 
         // Redirect back the user to the dashboard
         return redirect('/dashboard', ['success' => 'Login successful']);
-    }
-
-    public function dashboard()
-    {
-        var_dump($this->user->auth());
     }
 }
