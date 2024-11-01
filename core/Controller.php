@@ -18,4 +18,31 @@ class Controller
             }
         }
     }
+
+    /**
+     * Middleware for guest routes
+     */
+    protected function guest()
+    {
+        $userId = session('userId');
+        if ($userId) {
+            return redirect('/dashboard');
+        }
+    }
+
+    /**
+     * Middleware for auth routes
+     */
+    protected function auth()
+    {
+        $userId = session('userId');
+        if (!$userId) {
+            return redirect('/login');
+        }
+    }
+
+    protected function logout()
+    {
+        session(['userId' => null]);
+    }
 }

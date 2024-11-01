@@ -588,6 +588,11 @@ video {
   margin-bottom: 2.5rem;
 }
 
+.my-20 {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -747,6 +752,11 @@ video {
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .font-bold {

@@ -13,6 +13,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->user = new User();
+        $this->guest();
     }
 
     public function index()
@@ -65,5 +66,22 @@ class HomeController extends Controller
     {
         $this->user->delete($id);
         return back(['success' => 'User deleted']);
+    }
+
+    public function loginForm()
+    {
+        return view('login', 'main');
+    }
+
+    public function login(Request $request)
+    {
+        $this->validate($request->all());
+        $user = $this->user->login($request->all());
+        if (!$user) {
+            return back(['error' => 'Invalid login credentials']);
+        }
+
+        // Redirect back the user to the dashboard
+        return redirect('/dashboard', ['success' => 'Login successful']);
     }
 }
